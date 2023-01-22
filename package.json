@@ -1,0 +1,26 @@
+{
+  "name": "backend-dimetrodon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-MCT/backend-dimetrodon.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-MCT/backend-dimetrodon/issues"
+  },
+  "homepage": "https://github.com/EHB-MCT/backend-dimetrodon#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "mysql": "^2.18.1",
+    "mysql-await": "^2.2.3"
+  }
+}
