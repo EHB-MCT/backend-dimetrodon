@@ -26,7 +26,8 @@ app.listen(3000, () => {
 })
 
 
-app.get("/test",  async (req, res) => {
-    let r = await on.getSum();
+app.get("/test", async (req, res) => {
+    let r = await on.params(4, 6);
+
     res.send(r);
-  });
+});
