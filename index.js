@@ -77,7 +77,7 @@ app.post("/addArt", async (req, res) => {
 });
 
 
-app.post("/getArtPieceToDisplay/:id", async (req, res) => {
-    let r = await on.addArt(req.id);
+app.get("/getArtPieceToDisplay/:id", async (req, res) => {
+    let r = await on.getArtPieceToDisplay(req.id);
     res.send(r);
 });
