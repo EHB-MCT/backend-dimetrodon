@@ -4,6 +4,7 @@ var bodyParser = require('body-parser')
 const Procedure = require("./procedures.js")
 const on = new Procedure();
 var path = require('path');
+const { Blob } = require("buffer");
 
 const app = express();
 app.use(express.json());       // to support JSON-encoded bodies
