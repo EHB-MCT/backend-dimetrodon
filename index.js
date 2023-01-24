@@ -73,3 +73,9 @@ app.post("/addArt", async (req, res) => {
     let r = await on.addArt(art);
     res.send(r);
 });
+
+
+app.post("/getArtPieceToDisplay/:id", async (req, res) => {
+    let r = await on.addArt(req.id);
+    res.send(r);
+});

@@ -42,11 +42,18 @@ class Procedure {
     return result;
   }
 
-  async getFile(par){
+  async getFile(par) {
     let result = await sql.awaitQuery("CALL getFile(?)", [par]);
     return result;
   }
+
+
+  async getArtPieceToDisplay(par) {
+    let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
+    return result;
+  }
 }
+
 
 
 module.exports = Procedure;
