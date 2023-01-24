@@ -10,9 +10,11 @@ const app = express();
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded())
 
+const PORT = process.env.PORT || 3001;
+
 app.use(cors())
-app.listen(3001, () => {
-    console.log(`This app is runnning on port ${3001}`)
+app.listen(PORT, () => {
+    console.log(`This app is runnning on port ${PORT}`)
 });
 
 app.post("/login", async (req, res) => {
