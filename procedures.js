@@ -38,7 +38,7 @@ class Procedure {
 
   async addArt(par) {
     console.log(par);
-    let result = await sql.awaitQuery("CALL addArt(?,?,?,?,?,?,?,?,?)", par);
+    let result = await sql.awaitQuery("CALL addArt(?,?,?,?,?,?,?)", par);
     return result;
   }
 
