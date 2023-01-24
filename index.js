@@ -5,6 +5,7 @@ const multer = require('multer')
 const Procedure = require("./procedures.js")
 const on = new Procedure();
 var path = require('path');
+const { Blob } = require("buffer");
 
 const app = express();
 app.use(express.json());       // to support JSON-encoded bodies
@@ -14,17 +15,10 @@ app.use(cors())
 app.listen(3001, () => {
     console.log(`This app is runnning on port ${3001}`)
 });
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, 'uploads');
-    },
-    filename: function (req, file, cb) {
-        cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
-    }
-});
 
-var upload = multer({ dest: __dirname + '/public/uploads/' });
-var type =
+
+const upload = multer({ storage: multer.memoryStorage() })
+
 
     app.post("/login", async (req, res) => {
         const user = {
@@ -78,11 +72,18 @@ app.post("/register", async (req, res) => {
 
 
 
-app.post("/addArt", upload.single('blob'), async (req, res) => {
+app.post("/addArt", upload.single('file'), async (req, res) => {
 
-    console.log(req.body.blob);
+        let test = Buffer.from(req.file.buffer) // printing incoming file content as buffer
     const user =
-        [req.body.subject, 1, req.body.genre, req.body.style, req.body.name_art, req.body.description_art, req.body.namefile, req.body.ext, req.body.blob];
+        [req.body.subject, 1, req.body.genre, req.body.style, req.body.name_art, req.body.description_art, req.body.namefile, req.body.ext, test];
     let r = await on.addArt(user);
     return r;
+});
+
+
+app.get("/getFile/:id", async (req, res) => {
+let r = await on.getFile(req.params.id);
+console.log(r);
+res.send(r[0][0])
 });

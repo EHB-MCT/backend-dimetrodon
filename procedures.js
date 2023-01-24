@@ -42,6 +42,10 @@ class Procedure {
     return result;
   }
 
+  async getFile(par){
+    let result = await sql.awaitQuery("CALL getFile(?)", [par]);
+    return result;
+  }
 }
 
 
