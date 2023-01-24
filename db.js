@@ -1,6 +1,5 @@
 const mysql = require("mysql-await");
 
-console.log(dbConfig.HOST)
 // Create a connection to the database
 const connection = mysql.createConnection({
   host: process.env.HOST,
