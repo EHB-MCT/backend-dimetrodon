@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/EHB-MCT/backend-dimetrodon#readme",
   "dependencies": {
+    "body-parser": "^1.20.1",
+    "connect-busboy": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
     "mysql": "^2.18.1",
     "mysql-await": "^2.2.3"
   }
