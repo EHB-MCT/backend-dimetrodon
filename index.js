@@ -3,7 +3,11 @@ const cors = require('cors');
 const Procedure = require("./procedures.js")
 const http = require('http');
 
-const { Server } = require("socket.io");
+const { Server } = require("socket.io")(server, {
+    cors: {
+        origin: '*',
+    }
+});;
 
 const app = express();
 const server = http.createServer(app);
@@ -19,9 +23,10 @@ app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded())
 
 io.on('connection', (socket) => {
-
     socket.on('toDispay', async msg => {
+        console.log(msg)
         let r = await on.getArtPieceToDisplay(msg);
+        console.log(r)
         socket.broadcast.emit('display', r[0]);
     })
 });
