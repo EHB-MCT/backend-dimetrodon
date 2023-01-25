@@ -3,11 +3,7 @@ const cors = require('cors');
 const Procedure = require("./procedures.js")
 const http = require('http');
 
-const { Server } = require("socket.io")(server, {
-    cors: {
-        origin: '*',
-    }
-});;
+const { Server } = require("socket.io")
 
 const app = express();
 const server = http.createServer(app);
@@ -16,7 +12,11 @@ const on = new Procedure();
 
 const PORT = process.env.PORT || 3000;
 
-const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+    }
+});
 app.use(cors())
 
 app.use(express.json());       // to support JSON-encoded bodies
