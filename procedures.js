@@ -9,9 +9,11 @@ class Procedure {
   }
 
   async getFilters() {
-    let result = await sql.awaitQuery("CALL getFilters()");
+    let result = await sql.awaitQuery("CALL getGenres()");
+    let result2 = await sql.awaitQuery("CALL getStyles()");
+    let result3 = await sql.awaitQuery("CALL getSubjects()");
 
-    return result;
+    return [{ genres: result }, { styles: result2 }, { styles: result3 }];
   }
 
   async params(param1, param2) {
