@@ -60,7 +60,32 @@ class Procedure {
     let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
     return result;
   }
+
+  async applyThemJuicyFilter(par) {
+    console.log(par);
+    let test = []
+    if (par.genres.length) {
+      test.push('idgenre IN (' + par.genres.map(e => "'" + e.id.split('-')[0] + "'").join(',') + ')')
+    }
+    if (par.styles.length) {
+      test.push('idstyle IN (' + par.styles.map(e => "'" + e.id.split('-')[0] + "'").join(',') + ')')
+    }
+    if (par.subjects.length) {
+      test.push('idsubject IN (' + par.subjects.map(e => "'" + e.id.split('-')[0] + "'").join(',') + ')')
+    }
+    console.log(test.join(' OR '));
+    let result;
+    if (par.genres.length || par.subjects.length || par.styles.length) {
+      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart AND ` + test.join(' OR '))
+    } else {
+      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart ORDER BY RAND () LIMIT 100`)
+
+    }
+    return result;
+  }
 }
+
+
 
 
 

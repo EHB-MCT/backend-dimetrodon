@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors');
 const Procedure = require("./procedures.js")
 const http = require('http');
-
+const bodyParser = require('body-parser');
 const { Server } = require("socket.io")
 
 const app = express();
@@ -18,7 +18,7 @@ const io = new Server(server, {
     }
 });
 app.use(cors({ origin: '*' }))
-
+app.use(bodyParser.json());
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded())
 
@@ -104,5 +104,12 @@ app.get("/getArtPieceToDisplay/:id", async (req, res) => {
 
 app.get("/getFilters", async (req, res) => {
     let r = await on.getFilters();
+    res.send(r);
+});
+
+
+app.post("/applyThemJuicyFilter", async (req, res) => {
+    console.log(req.body)
+    let r = await on.applyThemJuicyFilter(req.body);
     res.send(r);
 });
