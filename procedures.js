@@ -8,6 +8,12 @@ class Procedure {
     return result;
   }
 
+  async getFilters() {
+    let result = await sql.awaitQuery("CALL getFilters()");
+
+    return result;
+  }
+
   async params(param1, param2) {
     let result = await sql.awaitQuery("CALL getCustomSum(?,?)", [param1, param2]);
     console.log(result);
@@ -53,6 +59,7 @@ class Procedure {
     return result;
   }
 }
+
 
 
 

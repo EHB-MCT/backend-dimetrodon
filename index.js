@@ -100,3 +100,9 @@ app.get("/getArtPieceToDisplay/:id", async (req, res) => {
 
     res.send(r[0]);
 });
+
+
+app.get("/getFilters", async (req, res) => {
+    let r = await on.getFilters();
+    res.send(r);
+});
