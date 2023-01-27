@@ -104,7 +104,7 @@ app.get("/getArtPieceToDisplay/:id", async (req, res) => {
 
 app.get("/getArtist/:id", async (req, res) => {
     let r = await on.getArtist(req.params.id);
-    res.send(r[0]);
+    res.send(r);
 });
 
 app.get("/getFilters", async (req, res) => {

@@ -56,7 +56,8 @@ class Procedure {
   }
   async getArtist(par) {
     let result = await sql.awaitQuery("CALL getArtist(?)", [par])
-    return result;
+    let result2 = await sql.awaitQuery("CALL getArtistPiece(?)", [par])
+    return [result[0], result2[0]];
   }
 
   async getArtPieceToDisplay(par) {
