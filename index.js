@@ -112,6 +112,11 @@ app.get("/getArtPiecePage/:id", async (req, res) => {
     res.send(r)
 })
 
+app.get("/getUserRoomsFrames/:id", async (req, res) => {
+    let r = await on.getUserRoomsFrames(req.params.id);
+    res.send(r)
+})
+
 app.get("/getFilters", async (req, res) => {
     let r = await on.getFilters();
     res.send(r);
@@ -122,4 +127,5 @@ app.post("/applyThemJuicyFilter", async (req, res) => {
     console.log(req.body)
     let r = await on.applyThemJuicyFilter(req.body);
     res.send(r);
+
 });

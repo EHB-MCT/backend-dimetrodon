@@ -70,6 +70,11 @@ class Procedure {
     return result
   }
 
+  async getUserRoomsFrames(par) {
+    let result = await sql.awaitQuery("CALL getUserRoomsFrames(?)", [par])
+    return result
+  }
+
   async applyThemJuicyFilter(par) {
     console.log(par);
     let test = []
