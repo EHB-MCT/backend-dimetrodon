@@ -2,10 +2,10 @@ const mysql = require("mysql-await");
 
 // Create a connection to the database
 const connection = mysql.createConnection({
-  host: "dt5.ehb.be",
-  user: "2223PRJALIAMRANI",
-  password: "FTWdU2",
-  database: "2223PRJALIAMRANI"
+  host: process.env.HOST,
+  user: procces.env.USER,
+  password: procces.env.PASSWORD,
+  database: procces.env.DATABASE
 });
 
 // open the MySQL connection
