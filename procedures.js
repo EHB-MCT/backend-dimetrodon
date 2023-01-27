@@ -102,6 +102,11 @@ class Procedure {
     let result = await sql.awaitQuery("CALL updateState(?)", [par])
     return result
   }
+
+  async getLikesOfuSER(par = 1) {
+    let result = await sql.awaitQuery("CALL getLikesOfuSER(?)", [par])
+    return result
+  }
 }
 
 

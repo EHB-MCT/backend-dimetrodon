@@ -141,3 +141,8 @@ app.post("/applyThemJuicyFilter", async (req, res) => {
     res.send(r);
 
 });
+
+app.get("/getLikesOfuSER", async (req, res) => {
+    let r = await on.getLikesOfuSER();
+    res.send(r);
+})
