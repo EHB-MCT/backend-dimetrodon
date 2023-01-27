@@ -49,10 +49,14 @@ io.on('connection', (socket) => {
     })
 
     socket.on('display-2', async msg => {
-        socket.broadcast.emit('display-2', msg);
+        let r = await on.getArtPieceToDisplay(msg);
+        console.log(r)
+        socket.broadcast.emit('display-2', r[0]);
     })
     socket.on('display-3', async msg => {
-        socket.broadcast.emit('display-3', 'toggle');
+        let r = await on.getArtPieceToDisplay(msg);
+        console.log(r)
+        socket.broadcast.emit('display-3', r[0]);
     })
 });
 
