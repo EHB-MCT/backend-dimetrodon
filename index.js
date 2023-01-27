@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
 
     socket.on('off', async msg => {
         let r = await on.updateState(msg)
-        socket.broadcast.emit('on', 'toggle');
+        socket.broadcast.emit('off', 'toggle');
     })
 });
 
