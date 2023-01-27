@@ -31,13 +31,15 @@ io.on('connection', (socket) => {
     })
 
     socket.on('on', async msg => {
-        let r = await on.updateState(msg)
         socket.broadcast.emit('on', 'toggle');
+
+        let r = await on.updateState(msg)
     })
 
     socket.on('off', async msg => {
-        let r = await on.updateState(msg)
         socket.broadcast.emit('off', 'toggle');
+
+        let r = await on.updateState(msg)
     })
 });
 
