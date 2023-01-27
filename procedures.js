@@ -65,6 +65,11 @@ class Procedure {
     return result;
   }
 
+  async getArtPiecePage(par) {
+    let result = await sql.awaitQuery("CALL getArtPiecePage(?)", [par])
+    return result
+  }
+
   async applyThemJuicyFilter(par) {
     console.log(par);
     let test = []
