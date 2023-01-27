@@ -29,6 +29,16 @@ io.on('connection', (socket) => {
         console.log(r)
         socket.broadcast.emit('display', r[0]);
     })
+
+    socket.on('on', async msg => {
+        let r = await on.updateState(msg)
+        socket.broadcast.emit('on', 'toggle');
+    })
+
+    socket.on('off', async msg => {
+        let r = await on.updateState(msg)
+        socket.broadcast.emit('on', 'toggle');
+    })
 });
 
 server.listen(PORT, () => {

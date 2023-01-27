@@ -97,6 +97,11 @@ class Procedure {
     }
     return result;
   }
+
+  async updateState(par) {
+    let result = await sql.awaitQuery("CALL updateState(?)", [par])
+    return result
+  }
 }
 
 
