@@ -41,6 +41,19 @@ io.on('connection', (socket) => {
 
         let r = await on.updateState(msg)
     })
+
+    socket.on('display-1', async msg => {
+        let r = await on.getArtPieceToDisplay(msg);
+        console.log(r)
+        socket.broadcast.emit('wheel', r[0]);
+    })
+
+    socket.on('display-2', async msg => {
+        socket.broadcast.emit('tablet', msg);
+    })
+    socket.on('display-3', async msg => {
+        socket.broadcast.emit('last', 'toggle');
+    })
 });
 
 server.listen(PORT, () => {
