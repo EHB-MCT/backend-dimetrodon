@@ -42,6 +42,10 @@ io.on('connection', (socket) => {
         let r = await on.updateState(msg)
     })
 
+    socket.on('broadcast', async msg => {
+        socket.broadcast.emit(msg, 'toggle');
+    })
+    
     socket.on('display-1', async msg => {
         let r = await on.getArtPieceToDisplay(msg);
         console.log(r)
@@ -162,4 +166,9 @@ app.post("/applyThemJuicyFilter", async (req, res) => {
 app.get("/getLikesOfuSER", async (req, res) => {
     let r = await on.getLikesOfuSER();
     res.send(r);
+})
+
+app.post("/checkGuid", async (req,res)=> {
+    let r = await on.checkGuid(req.body.guid)
+    res.send(r[0][0])
 })
