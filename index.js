@@ -43,25 +43,31 @@ io.on('connection', (socket) => {
     })
 
     socket.on('broadcast', async msg => {
-        socket.broadcast.emit(msg, 'toggle');
+        socket.broadcast.emit(msg, 'succes');
     })
     
-    socket.on('display-1', async msg => {
-        let r = await on.getArtPieceToDisplay(msg);
-        console.log(r)
-        socket.broadcast.emit('display-1', r[0]);
+    socket.on('broadcast-dis', async msg => {
+        socket.broadcast.emit(msg.split('+')[0], msg.split('+')[1]);
     })
+    
 
-    socket.on('display-2', async msg => {
-        let r = await on.getArtPieceToDisplay(msg);
-        console.log(r)
-        socket.broadcast.emit('display-2', r[0]);
-    })
-    socket.on('display-3', async msg => {
-        let r = await on.getArtPieceToDisplay(msg);
-        console.log(r)
-        socket.broadcast.emit('display-3', r[0]);
-    })
+
+    // socket.on('display-1', async msg => {
+    //     let r = await on.getArtPieceToDisplay(msg);
+    //     console.log(r)
+    //     socket.broadcast.emit('display-1', r[0]);
+    // })
+
+    // socket.on('display-2', async msg => {
+    //     let r = await on.getArtPieceToDisplay(msg);
+    //     console.log(r)
+    //     socket.broadcast.emit('display-2', r[0]);
+    // })
+    // socket.on('display-3', async msg => {
+    //     let r = await on.getArtPieceToDisplay(msg);
+    //     console.log(r)
+    //     socket.broadcast.emit('display-3', r[0]);
+    // })
 });
 
 server.listen(PORT, () => {
@@ -172,3 +178,14 @@ app.post("/checkGuid", async (req,res)=> {
     let r = await on.checkGuid(req.body.guid)
     res.send(r[0][0])
 })
+
+app.post("/createFrame",async (req,res)=>{
+    let r = await on.addFrame([req.body.iduser,req.body.framename,req.body.roomname,req.body.guid])
+    res.status(200).send({message:'succes'})
+})
+
+app.post("/getUserRooms",async (req,res)=>{
+    let r = await on.getUserRooms([req.body.iduser])
+    res.send(r[0])
+})
+

@@ -112,6 +112,16 @@ class Procedure {
     let result = await sql.awaitQuery("CALL checkGuid(?)",[par])
     return result
   }
+
+  async addFrame(par){
+    let result = sql.awaitQuery("CALL addFrame(?)",[par])
+    return result;
+  }
+
+  async getUserRooms(par){
+  let result = sql.awaitQuery("CALL getUserRooms(?)",[par])
+  return result;
+}
 }
 
 
