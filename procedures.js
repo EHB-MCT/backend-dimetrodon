@@ -90,9 +90,9 @@ class Procedure {
     console.log(test.join(' OR '));
     let result;
     if (par.genres.length || par.subjects.length || par.styles.length) {
-      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart AND ` + test.join(' OR '))
+      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart AND ` + test.join(' OR ') + ' ORDER BY RAND () LIMIT 100')
     } else {
-      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart ORDER BY RAND () LIMIT 100`)
+      result = await sql.awaitQuery(`SELECT TOP 40 * FROM arts,files WHERE  arts.idart = files.idart ORDER BY RAND () LIMIT 100`)
 
     }
     return result;
