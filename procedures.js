@@ -41,6 +41,7 @@ class Procedure {
 
   async register(firstname, lastname, email, password) {
     let result = await sql.awaitQuery("CALL createUser(?,?,?,?)", [firstname, lastname, email, password]);
+    console.log(result);
     return result;
   }
 
@@ -92,7 +93,7 @@ class Procedure {
     if (par.genres.length || par.subjects.length || par.styles.length) {
       result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart AND ` + test.join(' OR ') + ' ORDER BY RAND () LIMIT 100')
     } else {
-      result = await sql.awaitQuery(`SELECT TOP 40 * FROM arts,files WHERE  arts.idart = files.idart ORDER BY RAND () LIMIT 100`)
+      result = await sql.awaitQuery(`SELECT * FROM arts,files WHERE  arts.idart = files.idart ORDER BY RAND () LIMIT 100`)
 
     }
     return result;
@@ -108,20 +109,20 @@ class Procedure {
     return result
   }
 
-  async checkGuid(par){
-    let result = await sql.awaitQuery("CALL checkGuid(?)",[par])
+  async checkGuid(par) {
+    let result = await sql.awaitQuery("CALL checkGuid(?)", [par])
     return result
   }
 
-  async addFrame(par){
-    let result = sql.awaitQuery("CALL addFrame(?)",[par])
+  async addFrame(par) {
+    let result = sql.awaitQuery("CALL addFrame(?)", [par])
     return result;
   }
 
-  async getUserRooms(par){
-  let result = sql.awaitQuery("CALL getUserRooms(?)",[par])
-  return result;
-}
+  async getUserRooms(par) {
+    let result = sql.awaitQuery("CALL getUserRooms(?)", [par])
+    return result;
+  }
 }
 
 
