@@ -123,6 +123,17 @@ class Procedure {
     let result = sql.awaitQuery("CALL getUserRooms(?)", [par])
     return result;
   }
+
+  async likeStatePiece(par) {
+    let result = sql.awaitQuery("CALL likeStatePiece(?)", [par])
+    return result;
+  }
+
+
+  async toggleLike(par) {
+    let result = sql.awaitQuery("CALL toggleLike(?)", [par])
+    return result;
+  }
 }
 
 

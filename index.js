@@ -173,3 +173,17 @@ app.post("/getUserRooms", async (req, res) => {
     res.send(r[0])
 })
 
+
+
+app.post("/likeStatePiece", async (req, res) => {
+    let r = await on.likeStatePiece([req.body.iduser, req.body.idpiece])
+    res.send(r[0])
+
+})
+
+
+app.post("/toggleLike", async (req, res) => {
+    let r = await on.toggleLike([req.body.iduser, req.body.idpiece])
+    res.send(r[0])
+
+})  
