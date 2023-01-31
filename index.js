@@ -5,6 +5,13 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const { Server } = require("socket.io")
 
+const ContentBasedRecommender = require('content-based-recommender')
+const recommender = new ContentBasedRecommender({
+  minScore: 0.1,
+  maxSimilarDocuments: 100
+});
+
+
 const app = express();
 const server = http.createServer(app);
 
@@ -140,6 +147,14 @@ app.get("/getUserRoomsFrames/:id", async (req, res) => {
     res.send(r)
 })
 
+app.get("/getSimilarPieces/:id", async (req, res) => {
+    let r = await on.getAll();
+    recommender.train(r[0]);
+    const similarDocuments = recommender.getSimilarDocuments(req.params.id, 0, 10);
+    res.send(similarDocuments)
+})
+
+
 app.get("/getFilters", async (req, res) => {
     let r = await on.getFilters();
     res.send(r);
@@ -173,3 +188,16 @@ app.post("/getUserRooms", async (req, res) => {
     res.send(r[0])
 })
 
+
+app.post("/likeStatePiece", async (req, res) => {
+    let r = await on.likeStatePiece([req.body.iduser, req.body.idpiece])
+    res.send(r[0])
+
+})
+
+
+app.post("/toggleLike", async (req, res) => {
+    let r = await on.toggleLike([req.body.iduser, req.body.idpiece])
+    res.send(r)
+
+}) 
