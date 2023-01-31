@@ -151,7 +151,15 @@ app.get("/getSimilarPieces/:id", async (req, res) => {
     let r = await on.getAll();
     recommender.train(r[0]);
     const similarDocuments = recommender.getSimilarDocuments(req.params.id, 0, 10);
-    res.send(similarDocuments)
+    // let items = r[0].filter(e=>{ if(similarDocuments.map(e=> e.id).findIndex(e.id)){return 1}else{return -1}})
+    if(similarDocuments.length){
+        let tot = similarDocuments.map(e=> e.id);
+        let show = await on.getIds(tot);
+    
+        res.send(show)
+    }
+    res.send([])
+
 })
 
 

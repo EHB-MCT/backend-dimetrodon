@@ -139,6 +139,12 @@ class Procedure {
     let result = sql.awaitQuery("CALL getAll()")
     return result
   }
+
+  async getIds(par){
+    let result = sql.awaitQuery("SELECT * FROM arts,files WHERE arts.idart = files.idart AND arts.idart IN (?)",[par])
+    return result
+
+  }
   
 }
 
