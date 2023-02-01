@@ -145,7 +145,17 @@ class Procedure {
     return result
 
   }
+
+  async getFrameSettings(par){
+    let result = sql.awaitQuery("CALL getFrameSettings(?)",[par])
+    return result
+  }
   
+  async updateSettings(par){
+    let result = sql.awaitQuery("CALL updateSettings(?)",[par])
+    return result
+
+  }
 }
 
 

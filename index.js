@@ -7,7 +7,7 @@ const { Server } = require("socket.io")
 
 const ContentBasedRecommender = require('content-based-recommender')
 const recommender = new ContentBasedRecommender({
-  minScore: 0.1,
+  minScore: 0.05,
   maxSimilarDocuments: 100
 });
 
@@ -211,3 +211,16 @@ app.post("/toggleLike", async (req, res) => {
     res.send(r)
 
 }) 
+
+app.get("/getFrameSettings/:id", async (req, res) => {
+    let r = await on.getFrameSettings([req.params.id])
+    res.send(r)
+
+}) 
+app.post("/updateSettings", async (req, res) => {
+    let r = await on.updateSettings([req.body.idframe, req.body.settings])
+    console.log(r)
+    res.send(r)
+
+}) 
+
