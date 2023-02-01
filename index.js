@@ -7,8 +7,8 @@ const { Server } = require("socket.io")
 
 const ContentBasedRecommender = require('content-based-recommender')
 const recommender = new ContentBasedRecommender({
-  minScore: 0.05,
-  maxSimilarDocuments: 100
+    minScore: 0.05,
+    maxSimilarDocuments: 100
 });
 
 
@@ -156,12 +156,12 @@ app.get("/getSimilarPieces/:id", async (req, res) => {
     recommender.train(r[0]);
     const similarDocuments = recommender.getSimilarDocuments(req.params.id, 0, 10);
     // let items = r[0].filter(e=>{ if(similarDocuments.map(e=> e.id).findIndex(e.id)){return 1}else{return -1}})
-    if(similarDocuments.length != 0){
-        let tot = similarDocuments.map(e=> e.id);
+    if (similarDocuments.length != 0) {
+        let tot = similarDocuments.map(e => e.id);
         let show = await on.getIds(tot);
-    
+
         res.send(show)
-    }else{
+    } else {
         res.send([])
 
     }
@@ -214,17 +214,17 @@ app.post("/toggleLike", async (req, res) => {
     let r = await on.toggleLike([req.body.iduser, req.body.idpiece])
     res.send(r)
 
-}) 
+})
 
 app.get("/getFrameSettings/:id", async (req, res) => {
     let r = await on.getFrameSettings([req.params.id])
     res.send(r)
 
-}) 
+})
 app.post("/updateSettings", async (req, res) => {
     let r = await on.updateSettings([req.body.idframe, req.body.settings])
     console.log(r)
     res.send(r)
 
-}) 
+})
 

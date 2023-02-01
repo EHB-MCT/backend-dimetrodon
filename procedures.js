@@ -135,24 +135,24 @@ class Procedure {
     return result;
   }
 
-  async getAll(){
+  async getAll() {
     let result = sql.awaitQuery("CALL getAll()")
     return result
   }
 
-  async getIds(par){
-    let result = sql.awaitQuery("SELECT * FROM arts,files WHERE arts.idart = files.idart AND arts.idart IN (?)",[par])
+  async getIds(par) {
+    let result = sql.awaitQuery("SELECT * FROM arts,files WHERE arts.idart = files.idart AND arts.idart IN (?)", [par])
     return result
 
   }
 
-  async getFrameSettings(par){
-    let result = sql.awaitQuery("CALL getFrameSettings(?)",[par])
+  async getFrameSettings(par) {
+    let result = sql.awaitQuery("CALL getFrameSettings(?)", [par])
     return result
   }
-  
-  async updateSettings(par){
-    let result = sql.awaitQuery("CALL updateSettings(?)",[par])
+
+  async updateSettings(par) {
+    let result = sql.awaitQuery("CALL updateSettings(?)", [par])
     return result
 
   }
