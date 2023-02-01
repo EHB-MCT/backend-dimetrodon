@@ -158,7 +158,7 @@ class Procedure {
   }
 
   async setIp(par) {
-    let result = sql.awaitQuery("CALL this.setIp(?)", par)
+    let result = sql.awaitQuery("CALL this.setIp(?,?)", par)
     return result;
   }
 }
