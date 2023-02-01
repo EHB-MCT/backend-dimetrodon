@@ -37,6 +37,12 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('display', r[0]);
     })
 
+    socket.on('current-ip', async msg => {
+        let guid = msg.split('+')[0];
+        let ip = msg.split('+')[1];
+        let r = await on.setIp([guid, ip])
+    })
+
     socket.on('on', async msg => {
         socket.broadcast.emit('on', 'toggle');
 
@@ -56,7 +62,7 @@ io.on('connection', (socket) => {
         socket.broadcast.emit(msg.split('+')[0], msg.split('+')[1]);
 
     })
-    
+
     socket.on('broadcast-dis', async msg => {
         socket.broadcast.emit(msg.split('+')[0], msg.split('+')[1]);
     })
@@ -193,7 +199,7 @@ app.post("/checkGuid", async (req, res) => {
 })
 
 app.post("/createFrame", async (req, res) => {
-    let r = await on.addFrame([req.body.iduser, req.body.framename, req.body.roomname, req.body.guid])
+    let r = await on.addFrame([req.body.iduser, req.body.framename, req.body.roomname, req.body.guid, req.body.ip])
     res.status(200).send({ message: 'succes' })
 })
 
@@ -223,7 +229,6 @@ app.get("/getFrameSettings/:id", async (req, res) => {
 })
 app.post("/updateSettings", async (req, res) => {
     let r = await on.updateSettings([req.body.idframe, req.body.settings])
-    console.log(r)
     res.send(r)
 
 })
