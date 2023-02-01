@@ -53,7 +53,7 @@ io.on('connection', (socket) => {
         socket.broadcast.emit(msg, 'succes');
     })
     socket.on('broadcast-change', async msg => {
-        socket.broadcast.emit(msg.split('-')[0], msg.split('+-')[1]);
+        socket.broadcast.emit(msg.split('+')[0], msg.split('+')[1]);
 
     })
     
