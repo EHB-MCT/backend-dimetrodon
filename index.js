@@ -43,14 +43,8 @@ io.on('connection', (socket) => {
         let r = await on.setIp([guid, ip])
     })
 
-    socket.on('on', async msg => {
-        socket.broadcast.emit('on', 'toggle');
-
-        let r = await on.updateState(msg)
-    })
-
-    socket.on('off', async msg => {
-        socket.broadcast.emit('off', 'toggle');
+    socket.on('broadcast-sreen', async msg => {
+        socket.broadcast.emit(msg, 'toggle');
 
         let r = await on.updateState(msg)
     })
