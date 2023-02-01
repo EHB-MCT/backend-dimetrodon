@@ -134,6 +134,28 @@ class Procedure {
     let result = sql.awaitQuery("CALL toggleLike(?)", [par])
     return result;
   }
+
+  async getAll() {
+    let result = sql.awaitQuery("CALL getAll()")
+    return result
+  }
+
+  async getIds(par) {
+    let result = sql.awaitQuery("SELECT * FROM arts,files WHERE arts.idart = files.idart AND arts.idart IN (?)", [par])
+    return result
+
+  }
+
+  async getFrameSettings(par) {
+    let result = sql.awaitQuery("CALL getFrameSettings(?)", [par])
+    return result
+  }
+
+  async updateSettings(par) {
+    let result = sql.awaitQuery("CALL updateSettings(?)", [par])
+    return result
+
+  }
 }
 
 
