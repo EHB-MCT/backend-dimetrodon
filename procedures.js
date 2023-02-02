@@ -163,7 +163,7 @@ class Procedure {
   }
 
   async addHistory(par) {
-    let result = sql.awaitQuery("CALL addHistory(?,?,?,?,?)", [par])
+    let result = sql.awaitQuery("CALL addHistory(?)", [par])
     return result;
   }
 }
