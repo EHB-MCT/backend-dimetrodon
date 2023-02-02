@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
     socket.on('broadcast-sreen', async msg => {
         socket.broadcast.emit(msg, 'toggle');
 
-        let r = await on.updateState(msg)
+        let r = await on.updateState(msg.replace(''))
     })
 
     socket.on('broadcast', async msg => {
@@ -227,3 +227,10 @@ app.post("/updateSettings", async (req, res) => {
 
 })
 
+
+
+app.post("/addHistory", async (req, res) => {
+    let r = await on.addHistory([req.body.idframe, req.body.settings])
+    res.send(r)
+
+})

@@ -161,6 +161,11 @@ class Procedure {
     let result = sql.awaitQuery("CALL this.setIp(?,?)", par)
     return result;
   }
+
+  async addHistory(par) {
+    let result = sql.awaitQuery("CALL addHistory(?,?,?,?,?)", [par])
+    return result;
+  }
 }
 
 
