@@ -62,8 +62,13 @@ class Procedure {
   }
 
   async getArtPieceToDisplay(par) {
+    if (par == 'undefined') {
+      par = 0;
+    }
+
     let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
     return result;
+
   }
 
   async getStock(par) {
