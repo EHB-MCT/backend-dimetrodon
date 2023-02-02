@@ -146,6 +146,10 @@ app.get("/getArtPiecePage/:id", async (req, res) => {
     res.send(r)
 })
 
+app.get("/getStock/:id", async (req, res) => {
+    let r = await on.getStock(req.params.id);
+    res.send(r)
+})
 app.get("/getUserRoomsFrames/:id", async (req, res) => {
     let r = await on.getUserRoomsFrames(req.params.id);
     res.send(r)

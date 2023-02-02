@@ -66,6 +66,11 @@ class Procedure {
     return result;
   }
 
+  async getStock(par) {
+    let result = await sql.awaitQuery("CALL getStock(?)", [par])
+    return result
+  }
+
   async getArtPiecePage(par) {
     let result = await sql.awaitQuery("CALL getArtPiecePage(?)", [par])
     return result
