@@ -230,7 +230,7 @@ app.post("/updateSettings", async (req, res) => {
 
 
 app.post("/addHistory", async (req, res) => {
-    let r = await on.addHistory([req.body.idframe, req.body.settings])
+    let r = await on.addHistory([req.body.iduser, req.body.idart, req.body.status, req.body.fromdate, req.body.todate])
     res.send(r)
 
 })
