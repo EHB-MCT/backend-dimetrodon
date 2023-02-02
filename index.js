@@ -238,3 +238,9 @@ app.post("/addHistory", async (req, res) => {
     res.send(r)
 
 })
+
+app.get("/getHomePage", async (req, res) => {
+    let r = await on.getHomePage([req.params.id])
+    res.send(r[0])
+
+})

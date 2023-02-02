@@ -171,6 +171,11 @@ class Procedure {
     let result = sql.awaitQuery("CALL addHistory(?)", [par])
     return result;
   }
+
+  async getHomePage() {
+    let result = sql.awaitQuery("CALL getHomePage()")
+    return result;
+  }
 }
 
 
