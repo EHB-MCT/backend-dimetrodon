@@ -186,8 +186,13 @@ app.post("/applyThemJuicyFilter", async (req, res) => {
 
 });
 
-app.get("/getLikesOfuSER", async (req, res) => {
-    let r = await on.getLikesOfuSER();
+app.get("/getLikesOfuSER/:id", async (req, res) => {
+    let r = await on.getLikesOfuSER(req.params.id);
+    res.send(r);
+})
+
+app.get("/getRentOfUser/:id", async (req, res) => {
+    let r = await on.getRentOfUser(req.params.id);
     res.send(r);
 })
 

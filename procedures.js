@@ -114,6 +114,10 @@ class Procedure {
     return result
   }
 
+  async getRentOfUser(par = 1) {
+    let result = await sql.awaitQuery("CALL getRentOfUser(?)", [par])
+    return result
+  }
   async checkGuid(par) {
     let result = await sql.awaitQuery("CALL checkGuid(?)", [par])
     return result
