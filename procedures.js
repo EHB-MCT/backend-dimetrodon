@@ -63,10 +63,14 @@ class Procedure {
 
   async getArtPieceToDisplay(par) {
     console.log(par);
-
+    if(isNaN(par)){
+      return [{}]
+    }else{
     let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
-    
     return result;
+
+    }
+    
 
   }
 
