@@ -62,7 +62,7 @@ class Procedure {
   }
 
   async getArtPieceToDisplay(par) {
-    if (par == 'undefined') {
+    if (par == undefined) {
       par = 0;
     }
 
