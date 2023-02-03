@@ -257,4 +257,3 @@ app.get("/getNewest", async (req, res) => {
 
 })
 
-getNewest
