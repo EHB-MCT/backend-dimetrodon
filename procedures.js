@@ -65,6 +65,7 @@ class Procedure {
     console.log(par);
 
     let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
+    
     return result;
 
   }
