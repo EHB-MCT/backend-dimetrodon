@@ -74,6 +74,11 @@ class Procedure {
 
   }
 
+  async getNewest() {
+    let result = await sql.awaitQuery("CALL getNewest()")
+    return result
+  }
+
   async getStock(par) {
     let result = await sql.awaitQuery("CALL getStock(?)", [par])
     return result

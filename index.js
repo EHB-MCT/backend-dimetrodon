@@ -249,3 +249,12 @@ app.get("/getHomePage", async (req, res) => {
     res.send(r[0])
 
 })
+
+
+app.get("/getNewest", async (req, res) => {
+    let r = await on.getNewest([req.params.id])
+    res.send(r[0])
+
+})
+
+getNewest
