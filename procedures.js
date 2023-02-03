@@ -62,9 +62,7 @@ class Procedure {
   }
 
   async getArtPieceToDisplay(par) {
-    if (par == undefined) {
-      par = 0;
-    }
+    console.log(par);
 
     let result = await sql.awaitQuery("CALL getArtPieceToDisplay(?)", [par])
     return result;
